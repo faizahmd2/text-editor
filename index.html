@@ -12,6 +12,7 @@
             --text-color: #333333;
             --toolbar-bg: #f8f9fa;
             --status-bg: rgba(0, 0, 0, 0.7);
+            --status-color: #d6c7c7;
         }
 
         [data-theme="dark"] {
@@ -20,6 +21,7 @@
             --text-color: #ffffff;
             --toolbar-bg: #363636;
             --status-bg: rgba(255, 255, 255, 0.7);
+            --status-color: #292828;
         }
 
         body {
@@ -95,6 +97,7 @@
             bottom: 20px;
             right: 20px;
             background-color: var(--status-bg);
+            color: var(--status-color);
             display: none;
             animation: fadeOut 2s forwards;
             animation-delay: 2s;
@@ -104,6 +107,7 @@
             bottom: 20px;
             left: 20px;
             background-color: var(--status-bg);
+            color: var(--status-color);
         }
 
         @keyframes fadeOut {
@@ -166,6 +170,7 @@
         <button class="toolbar-button" id="open-file">Open</button>
         <button class="toolbar-button" id="save-file">Save As</button>
         <button class="toolbar-button" id="show-shortcuts">Shortcuts</button>
+        <button class="toolbar-button" id="clear">Clear</button>
         <button class="toolbar-button" id="theme-toggle">Toggle Theme</button>
     </div>
 
@@ -329,6 +334,9 @@
         document.getElementById('save-file').addEventListener('click', saveFile);
         document.getElementById('show-shortcuts').addEventListener('click', () => {
             document.getElementById('shortcuts-modal').style.display = 'flex';
+        });
+        document.getElementById('clear').addEventListener('click', () => {
+            tinymce.activeEditor.setContent('');
         });
 
         // Handle beforeunload
