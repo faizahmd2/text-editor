@@ -337,6 +337,7 @@
         });
         document.getElementById('clear').addEventListener('click', () => {
             tinymce.activeEditor.setContent('');
+            localStorage.removeItem('editorContent');
         });
 
         // Handle beforeunload
